@@ -20,8 +20,7 @@ typedef struct Pila{
 
     Nodo* separaLugar(int dato){
         Nodo *aux = (Nodo*)malloc(sizeof(Nodo));
-        (*aux).dato=dato;
-
+        aux->dato=dato;
         return aux;
     }
 
@@ -31,22 +30,21 @@ typedef struct Pila{
         if(isEmpty()){
             head = aux;
         }else{
-            (*aux).next = head;
+            aux->next = head;
             head = aux;
         }
     }
 
     void pop(){
         if(!isEmpty()){
-            head = (*head).next;
+            head = head->next;
         }
     }
 
     int top(){
         if(!isEmpty()){
-            return (*head).dato;
+            return head->dato;
         }
-
         return -1;
     }
 
@@ -57,8 +55,8 @@ typedef struct Pila{
             cout<<"pila:";
             Nodo *iter=head;
             while(iter){
-                cout<<(*iter).dato<<" ";
-                iter=(*iter).next;
+                cout<<iter->dato<<" ";
+                iter=iter->next;
             }
             cout<<endl;
         }
@@ -71,9 +69,8 @@ int main(){
 
     int n;
     cin>>n;
-
     Stack st;
-    
+
     for(int i=0;i<n;i++){
         int dato; cin>>dato;
         st.push(dato);
