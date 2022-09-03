@@ -47,21 +47,6 @@ typedef struct Pila{
         }
         return -1;
     }
-
-    void toString(){
-        if(isEmpty()){
-            cout<<"La pila esta vacia"<<endl;
-        }else{
-            cout<<"pila:";
-            Nodo *iter=head;
-            while(iter){
-                cout<<iter->dato<<" ";
-                iter=iter->next;
-            }
-            cout<<endl;
-        }
-    }
-
 }Stack;
 
 int main(){
@@ -76,12 +61,13 @@ int main(){
         st.push(dato);
     }
 
-    cout<<"top:"<<st.top()<<endl;
-    st.toString();
-    st.pop();
-    cout<<"top:"<<st.top()<<endl;
-    st.toString();
-
+    cout<<"Pila:";
+    while(!st.isEmpty()){
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    cout<<endl;
+    
     return 0;
 }
 
