@@ -11,12 +11,12 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int x, y;
-    cin>>x>>y;
+    int n, k; cin>>n>>k;
 
-    if(x==y) cout<<"ANY"<<endl;
-    else if(x<y) cout<<"REPAIR"<<endl;
-    else cout<<"NEW PHONE"<<endl;
+    if(k*(k+1)/2 <= n)
+        cout<<"YES"<<endl;
+    else
+        cout<<"NO"<<endl;
 }
 
 int main(){

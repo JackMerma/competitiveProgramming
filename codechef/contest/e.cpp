@@ -11,12 +11,13 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int x, y;
-    cin>>x>>y;
+    int x, y; cin>>x>>y;
 
-    if(x==y) cout<<"ANY"<<endl;
-    else if(x<y) cout<<"REPAIR"<<endl;
-    else cout<<"NEW PHONE"<<endl;
+    if(y<x){
+        cout<<0<<" "<<y<<" "<<((3*x)-y)<<endl;
+    }else {
+        cout<<-100<<" "<<y<<" "<<((3*x)-y+100)<<endl;
+    }
 }
 
 int main(){

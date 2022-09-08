@@ -1,26 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
+#define ull unsigned long long
 #define ll long long
 #define ld long double
+#define pi 3.141592653589793238462
+#define INF 2e9
+#define len length
 #define endl "\n"
 
 void solve(){
-    char a,b,c;
-    cin>>a>>b>>c;
-    char oa,ob;
-    cin>>oa>>ob;
+    int f; cin>>f;
 
-    if(a==oa||a==ob) cout<<a<<endl;
-    else if(b==oa||b==ob) cout<<b<<endl;
-    else cout<<c<<endl;
+    if(f>98) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
 
 int main(){
 	ios_base::sync_with_stdio(false); cin.tie(NULL);
+    clock_t z = clock();
 
     ll t; cin>>t;
-    while(t--) solve();
+
+    while(t--) 
+        solve();
+
+#ifndef ONLINE_JUDGE
+    cout<<endl<<"Tiempo total: "<<fixed<<setprecision(3)<<(double)(clock()-z)/CLOCKS_PER_SEC<<endl;
+#endif
 
 	return 0;
 }

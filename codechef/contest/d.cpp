@@ -11,16 +11,28 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int x, y;
-    cin>>x>>y;
+    int n; cin>>n;
+    vector<int> arr(n);
 
-    if(x==y) cout<<"ANY"<<endl;
-    else if(x<y) cout<<"REPAIR"<<endl;
-    else cout<<"NEW PHONE"<<endl;
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+
+    int k; cin>>k;
+    set<int> dele;
+    for(int i=0;i<k;i++){
+        int data; cin>>data;
+        dele.insert(data);
+    }
+
+    for(int i=0;i<n; i++){
+        if(dele.find(arr[i])==dele.end())
+            cout<<arr[i]<<" ";
+    }
+    cout<<endl;
 }
 
 int main(){
-	ios_base::sync_with_stdio(false); cin.tie(NULL);
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
     clock_t z = clock();
 
     ll t; cin>>t;
@@ -32,6 +44,6 @@ int main(){
     cout<<endl<<"Tiempo total: "<<fixed<<setprecision(3)<<(double)(clock()-z)/CLOCKS_PER_SEC<<endl;
 #endif
 
-	return 0;
+    return 0;
 }
 
