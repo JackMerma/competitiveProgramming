@@ -11,12 +11,22 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int x, y;
-    cin>>x>>y;
+    int n; cin>>n;
+    ll maxVal, minVal;
+    cin>>maxVal;
 
-    if(x==y) cout<<"ANY"<<endl;
-    else if(x<y) cout<<"REPAIR"<<endl;
-    else cout<<"NEW PHONE"<<endl;
+    minVal=maxVal;
+
+    for(int i=0;i<n-1;i++){
+        ll dato; cin>>dato;
+        maxVal=max(dato, maxVal);
+        minVal=min(dato, minVal);
+    }
+
+    ll a=max(maxVal*maxVal, max(minVal*minVal, maxVal*minVal));
+    ll b=min(maxVal*maxVal, min(minVal*minVal, maxVal*minVal));
+
+    cout<<b<<" "<<a<<endl;
 }
 
 int main(){

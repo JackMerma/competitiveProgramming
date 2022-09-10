@@ -10,11 +10,23 @@ using namespace std;
 #define len length
 #define endl "\n"
 
-void solve(){
-    int f; cin>>f;
+int N = 1000000001;
 
-    if(f>98) cout<<"YES"<<endl;
-    else cout<<"NO"<<endl;
+void solve(){
+    int n; cin>>n;
+    map<ll, int> m;
+
+    for(int i=0;i<n;i++){
+        ll dato; cin>>dato;
+        m[dato]++;
+    }
+
+    ll ans=0;
+    for(auto iter=m.begin(); iter!=m.end(); iter++){
+        ll c = iter->second;
+        ans+=(c*(c-1))/2;
+    }
+    cout<<ans<<endl;
 }
 
 int main(){
