@@ -16,32 +16,30 @@ using namespace std;
 
 void solve(){
     int n; cin>>n;
-    ll k; cin>>k;
-    ll b; cin>>b;
-    ulli s; cin>>s;
+    ll k, b, s;
+    cin>>k>>b>>s;
 
     if(k*b>s){
         cout<<-1<<endl;
     }else{
-        ulli sobra=(s<(k*(b+1)-1))?0:s-(k*(b+1)-1);
-        if(!sobra){
-            for(int i=0;i<n-1;i++)
-                cout<<0<<" ";
-            cout<<s<<endl;
-        }else{
-            ll cant=sobra/(k-1);
-            if(cant>=n){
-                cout<<-1<<endl;
-            }else{
-                sobra=(s<k*b)?0:s-k*b;
-                ll newCant=sobra/(k-1);
-                for(int i=0;i<n-1-newCant;i++)
-                    cout<<0<<" ";
-                for(int i=0;i<newCant;i++)
-                    cout<<k-1<<" ";
-                cout<<s-((k-1)*newCant)<<endl;
-            }
+        vector<ll> arr(n);
+        arr[0]+=b*k;
+        s-=b*k;
+
+        for(int i=0;i<n;i++){
+            ll aux=min(s, k-1);
+            s-=aux;
+            arr[i]+=aux;
         }
+
+        if(s>0){
+            cout<<-1<<endl;
+            return;
+        }
+
+        for(int i=0;i<n;i++)
+            cout<<arr[i]<<" ";
+        cout<<endl;
     }
 }
 
