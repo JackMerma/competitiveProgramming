@@ -13,30 +13,24 @@ using namespace std;
 int N = 1000000001;
 
 void solve(){
-    int n; cin>>n;
-    map<ll, int> m;
+    int n, h, x;
+    cin>>n>>h>>x;
 
     for(int i=0;i<n;i++){
-        ll dato; cin>>dato;
-        m[dato]++;
+        int dato; cin>>dato;
+        if(dato+x>=h){
+            cout<<"YES"<<endl;
+            return;
+        }
     }
-
-    ll ans=0;
-    for(auto iter=m.begin(); iter!=m.end(); iter++){
-        ll c = iter->second;
-        ans+=(c*(c-1))/2;
-    }
-    cout<<ans<<endl;
+    cout<<"NO"<<endl;
 }
 
 int main(){
 	ios_base::sync_with_stdio(false); cin.tie(NULL);
     clock_t z = clock();
 
-    ll t; cin>>t;
-
-    while(t--) 
-        solve();
+    solve();
 
 #ifndef ONLINE_JUDGE
     cout<<endl<<"Tiempo total: "<<fixed<<setprecision(3)<<(double)(clock()-z)/CLOCKS_PER_SEC<<endl;

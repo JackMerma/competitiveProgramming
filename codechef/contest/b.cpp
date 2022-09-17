@@ -11,22 +11,15 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int n; cin>>n;
-    ll maxVal, minVal;
-    cin>>maxVal;
+    int arr[] = {6, 2, 5, 5, 4, 5, 6, 3, 7, 6};
+    int a, b;
+    cin>>a>>b;
+    string sum=to_string(a+b);
+    int ans=0;
 
-    minVal=maxVal;
-
-    for(int i=0;i<n-1;i++){
-        ll dato; cin>>dato;
-        maxVal=max(dato, maxVal);
-        minVal=min(dato, minVal);
-    }
-
-    ll a=max(maxVal*maxVal, max(minVal*minVal, maxVal*minVal));
-    ll b=min(maxVal*maxVal, min(minVal*minVal, maxVal*minVal));
-
-    cout<<b<<" "<<a<<endl;
+    for(int i=0;i<sum.length();i++)
+        ans+=arr[sum[i]-'0'];
+    cout<<ans<<endl;
 }
 
 int main(){

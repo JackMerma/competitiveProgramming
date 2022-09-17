@@ -10,18 +10,35 @@ using namespace std;
 #define len length
 #define endl "\n"
 
-void solve(){
-    int x, y; cin>>x>>y;
+vector<string> arr;
 
-    if(y<x){
-        cout<<0<<" "<<y<<" "<<((3*x)-y)<<endl;
-    }else {
-        cout<<-100<<" "<<y<<" "<<((3*x)-y+100)<<endl;
+void get(int n, int total, string str, int dat[]){
+    if(total==n){
+        arr.push_back(str);
+        return;
+    }
+
+    for(int i=0;i<n;i++){
+        if(dat[i]){
+            dat[i]=0;
+            get(n, total+1, str+to_string(i+1), dat);
+            dat[i]=1;
+        }
     }
 }
 
+void solve(){
+    int n; cin>>n;
+    ll k; cin>>k;
+
+    int dat[9]={1,1,1,1,1,1,1,1,1};
+    get(n, 0, "", dat);
+    cout<<arr[k-1]<<endl;
+    arr.clear();
+}
+
 int main(){
-	ios_base::sync_with_stdio(false); cin.tie(NULL);
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
     clock_t z = clock();
 
     ll t; cin>>t;
@@ -33,6 +50,6 @@ int main(){
     cout<<endl<<"Tiempo total: "<<fixed<<setprecision(3)<<(double)(clock()-z)/CLOCKS_PER_SEC<<endl;
 #endif
 
-	return 0;
+    return 0;
 }
 

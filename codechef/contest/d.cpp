@@ -11,24 +11,12 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int n; cin>>n;
-    vector<int> arr(n);
+    int x, y; cin>>x>>y;
+    double arr[x+1][y+1];
 
-    for(int i=0;i<n;i++)
-        cin>>arr[i];
-
-    int k; cin>>k;
-    set<int> dele;
-    for(int i=0;i<k;i++){
-        int data; cin>>data;
-        dele.insert(data);
-    }
-
-    for(int i=0;i<n; i++){
-        if(dele.find(arr[i])==dele.end())
-            cout<<arr[i]<<" ";
-    }
-    cout<<endl;
+    for(int i=0;i<x;i++)
+        for(int j=0;j<y;j++)
+            arr[i][j]=sqrt(pow(i+1, 2)+pow(j+1, 2));
 }
 
 int main(){
