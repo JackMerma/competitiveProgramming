@@ -15,31 +15,14 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int n; cin>>n;
-    int arr[n];
+    int n, m, sa, sb, d;
+    cin>>n>>m>>sa>>sb>>d;
 
-    for(int i=0;i<n;i++)
-        cin>>arr[i];
-
-    if(n==1){
-        cout<<0<<endl;
+    if((sa-d<=1&&sb-d<=1)||(sa+d>=n&&sb+d>=m)||(sa-d<=1&&sa+d>=n)||(sb-d<=1&&sb+d>=m)){
+        cout<<-1<<endl;
         return;
     }
-
-    int maxNum=arr[0], minNum=arr[0];
-
-    for(int i=0;i<n;i++){
-        minNum=min(minNum, arr[i]);
-        maxNum=max(maxNum, arr[i]);
-    }
-
-    int ans=-1;
-
-    for(int i=1;i<n;i++)
-        if(arr[i-1]>=arr[i])
-            ans=max(ans, arr[i-1]-arr[i]);
-
-    cout<<max(ans, max(maxNum-arr[0], arr[n-1]-minNum))<<endl;
+    cout<<n+m-2<<endl;
 }
 
 int main(){

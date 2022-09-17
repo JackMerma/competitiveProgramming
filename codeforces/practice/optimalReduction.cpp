@@ -14,32 +14,33 @@ using namespace std;
 #define len length
 #define endl "\n"
 
+bool order1(ll arr[], int n){
+    for(int i=0;i<n-1;i++)
+        if(arr[i]>arr[i+1])
+            return 0;
+    return 1;
+}
+
+bool order2(ll arr[], int n){
+    for(int i=0;i<n-1;i++)
+        if(arr[i]<arr[i+1])
+            return 0;
+    return 1;
+}
+
 void solve(){
     int n; cin>>n;
-    int arr[n];
+    ll arr[n];
 
     for(int i=0;i<n;i++)
         cin>>arr[i];
 
-    if(n==1){
-        cout<<0<<endl;
-        return;
-    }
-
-    int maxNum=arr[0], minNum=arr[0];
-
-    for(int i=0;i<n;i++){
-        minNum=min(minNum, arr[i]);
-        maxNum=max(maxNum, arr[i]);
-    }
-
-    int ans=-1;
-
-    for(int i=1;i<n;i++)
-        if(arr[i-1]>=arr[i])
-            ans=max(ans, arr[i-1]-arr[i]);
-
-    cout<<max(ans, max(maxNum-arr[0], arr[n-1]-minNum))<<endl;
+    cout<<order1(arr, n)<<endl;
+    cout<<order2(arr, n)<<endl;
+    if(order1(arr, n)||order2(arr, n))
+        cout<<"YES"<<endl;
+    else
+        cout<<"NO"<<endl;
 }
 
 int main(){

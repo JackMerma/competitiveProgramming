@@ -16,30 +16,38 @@ using namespace std;
 
 void solve(){
     int n; cin>>n;
-    int arr[n];
+    string str; cin>>str;
+    int len=str.length();
 
-    for(int i=0;i<n;i++)
-        cin>>arr[i];
-
-    if(n==1){
+    if(len==1){
         cout<<0<<endl;
         return;
     }
 
-    int maxNum=arr[0], minNum=arr[0];
+    ll ans=0;
+    for(int i=0;i<len;i++) ans+=(str[i]=='L')?i:len-i-1;
+    pqueue<ll> dat;
 
-    for(int i=0;i<n;i++){
-        minNum=min(minNum, arr[i]);
-        maxNum=max(maxNum, arr[i]);
+    for(int i=0;i<len/2;i++)
+        if(str[i]=='L')
+            dat.push(len-i-1-i);
+
+    for(int i=len/2+len%2;i<len;i++)
+        if(str[i]=='R')
+            dat.push(i-(len-i-1));
+
+    int res=len-dat.size();
+
+    while(!dat.empty()){
+        cout<<ans+dat.top()<<" ";
+        ans+=dat.top();
+        dat.pop();
     }
 
-    int ans=-1;
+    for(int i=0;i<res;i++)
+        cout<<ans<<" ";
+    cout<<endl;
 
-    for(int i=1;i<n;i++)
-        if(arr[i-1]>=arr[i])
-            ans=max(ans, arr[i-1]-arr[i]);
-
-    cout<<max(ans, max(maxNum-arr[0], arr[n-1]-minNum))<<endl;
 }
 
 int main(){
