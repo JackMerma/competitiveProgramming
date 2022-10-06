@@ -16,6 +16,7 @@ class List {
         bool isEmpty();
         int size();
         List *delete_k(int);
+        List *insert_k(int, int);
         void to_string();
     private:
         Node* last;  

@@ -44,6 +44,27 @@ int List::size(){
     return c;
 }
 
+List* List::insert_k(int index, int data){
+    int s = size();
+    if(s+1 < index) return this;
+    
+    if(isEmpty()||s == index)
+        return append(data);
+
+    cout<<"LAST"<<endl;
+
+    Node *pnt = last;
+    Node *n = new Node();
+    n->data = data;
+
+    while(index--)
+        pnt=pnt->next;
+    n->next = pnt->next;
+    pnt->next=n;
+    
+    return this;
+}
+
 List* List::delete_k(int index){
     if(!isEmpty()){
         if(last == last->next){
