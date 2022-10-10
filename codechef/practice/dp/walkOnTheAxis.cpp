@@ -33,15 +33,9 @@ using namespace std;
 #define len length
 #define endl "\n"
 
-/**
-3         2           1
-C---------X-----------Y
-     A          B
-*/
-
 void solve(){
-    int a, b; cin>>a>>b;
-    cout<<a+b<<endl;
+    ll n; cin>>n;
+    cout<<n*(n+1)/2+n<<endl;
 }
 
 int main(){
@@ -59,3 +53,4 @@ int main(){
 
 	return 0;
 }
+

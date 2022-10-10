@@ -32,30 +32,34 @@ using namespace std;
 #define INF 2e9
 #define len length
 #define endl "\n"
+umap<ll, ll> dp;
 
-/**
-3         2           1
-C---------X-----------Y
-     A          B
-*/
+ull getAns(ull n){
+    if(n<2) return n;
+    if(dp[n]) return dp[n];
+
+    dp[n]=max(n, getAns(n/2)+getAns(n/3)+getAns(n/4));
+    return dp[n];
+}
 
 void solve(){
-    int a, b; cin>>a>>b;
-    cout<<a+b<<endl;
+    ull n;
+    while(cin>>n){
+        ll ans=getAns(n);
+        cout<<ans<<endl;
+    }
 }
 
 int main(){
-	ios_base::sync_with_stdio(false); cin.tie(NULL);
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
     clock_t z = clock();
 
-    ll t; cin>>t;
-
-    while(t--) 
-        solve();
+    solve();
 
 #ifndef ONLINE_JUDGE
     cout<<endl<<"Tiempo total: "<<fixed<<setprecision(3)<<(double)(clock()-z)/CLOCKS_PER_SEC<<endl;
 #endif
 
-	return 0;
+    return 0;
 }
+

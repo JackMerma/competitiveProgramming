@@ -33,15 +33,19 @@ using namespace std;
 #define len length
 #define endl "\n"
 
-/**
-3         2           1
-C---------X-----------Y
-     A          B
-*/
-
 void solve(){
-    int a, b; cin>>a>>b;
-    cout<<a+b<<endl;
+    int n; cin>>n;
+    int dp[n][n]={0};
+
+    for(int i=1;i<=n;i++)
+        for(int j=0;j<i;j++)
+            cin>>dp[i-1][j];
+
+    for(int i=n-2;i>=0;i--)
+        for(int j=0;j<n;j++)
+            dp[i][j]=dp[i][j]+max(dp[i+1][j], dp[i+1][j+1]);
+
+    cout<<dp[0][0]<<endl;
 }
 
 int main(){
@@ -59,3 +63,4 @@ int main(){
 
 	return 0;
 }
+

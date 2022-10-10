@@ -33,15 +33,26 @@ using namespace std;
 #define len length
 #define endl "\n"
 
-/**
-3         2           1
-C---------X-----------Y
-     A          B
-*/
+bool get(string a, string b, int n, int m){
+    for(int i=0, j=0; i<n&&j<m; i++, j++){
+        if(a[i]!=b[j])
+            j--;
+        else
+            if(j+1==m)
+                return 1;
+    }
+    return 0;
+}
 
 void solve(){
-    int a, b; cin>>a>>b;
-    cout<<a+b<<endl;
+    string a, b; cin>>a>>b;
+    int n=a.length();
+    int m=b.length();
+
+    if(n<m) swap(a, b), swap(n, m);
+
+    if(get(a, b, n, m)) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
 
 int main(){
@@ -59,3 +70,4 @@ int main(){
 
 	return 0;
 }
+
