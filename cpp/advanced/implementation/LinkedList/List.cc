@@ -46,12 +46,8 @@ int List::size(){
 
 List* List::insert_k(int index, int data){
     int s = size();
-    if(s+1 < index) return this;
-    
-    if(isEmpty()||s == index)
-        return append(data);
-
-    cout<<"LAST"<<endl;
+    if(s < index || index < 0) return this;
+    if(s == index) return append(data);
 
     Node *pnt = last;
     Node *n = new Node();
@@ -59,6 +55,7 @@ List* List::insert_k(int index, int data){
 
     while(index--)
         pnt=pnt->next;
+
     n->next = pnt->next;
     pnt->next=n;
     
