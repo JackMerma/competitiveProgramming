@@ -35,25 +35,33 @@ using namespace std;
 
 void solve(){
     int n; cin>>n;
-    vector<vector<int>> arr(51);
+    char c; cin>>c;
+    char str[1000000] = {0};
+
+    for(int i=0;i<n;i++)
+        cin>>str[i];
+
+    int pos1 = -1;
+    int pos2 = -1;
 
     for(int i=0;i<n;i++){
-        int pos; cin>>pos;
-        arr[pos].push_back(i);
-    }
-    string str; cin>>str;
-
-    for(auto fil:arr){
-        if(fil.size()>1){
-            for(int i=1;i<int(fil.size());i++){
-                if(str[fil[i]] != str[fil[0]]){
-                    cout<<"NO"<<endl;
-                    return;
-                }
-            }
+        if(str[i]=='g'){
+            if(pos1==-1)
+                pos1=i;
+            pos2=i;
         }
     }
-    cout<<"YES"<<endl;
+
+    int ans=-1;
+    for(int i=0;i<n;i++){
+        if(str[i]==c){
+            if(i<pos2)
+                ans=max(ans, pos2-i);
+            else
+                ans=max(ans, n-i+pos1);
+        }
+    }
+    cout<<ans<<endl;
 }
 
 int main(){
@@ -71,3 +79,4 @@ int main(){
 
 	return 0;
 }
+

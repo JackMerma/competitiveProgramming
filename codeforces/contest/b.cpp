@@ -15,33 +15,54 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int n; cin>>n;
-    ll x; cin>>x;
+    ll n, q; cin>>n>>q;
+    ll cp=0, ci=0;
+    ll sp=0, si=0;
 
-    int arr[n];
-
-    for(int i=0;i<n;i++)
-        cin>>arr[i];
-
-    sort(arr, arr+n);
-
-    int ans=0;
-    ll sum=0;
-
-    for(int i=0;i<n;i++){
-        sum+=arr[i];
-        if(sum>x)
-            break;
-        ans++;
+    while(n--){
+        ll num; cin>>num;
+        if(num%2){
+            ci+=num;
+            si++;
+        }else{
+            cp+=num;
+            sp++;
+        }
     }
-    cout<<ans<<endl;
+
+    while(q--){
+        int t; cin>>t;
+        ll num; cin>>num;
+
+        if(t){
+            ci+=si*num;
+            if(num%2){
+                cp+=ci;
+                sp+=si;
+                ci=0;
+                si=0;
+            }
+        }else{
+            cp+=sp*num;
+            if(num%2){
+                ci+=cp;
+                si+=sp;
+                cp=0;
+                sp=0;
+            }
+        }
+        cout<<ci+cp<<endl;
+    }
 }
 
 int main(){
 	ios_base::sync_with_stdio(false); cin.tie(NULL);
     clock_t z = clock();
 
-    solve();
+    ll t ; cin>>t;
+
+    while(t--)
+        solve();
 
 #ifndef ONLINE_JUDGE
     cout<<endl<<"Tiempo total: "<<fixed<<setprecision(3)<<(double)(clock()-z)/CLOCKS_PER_SEC<<endl;
