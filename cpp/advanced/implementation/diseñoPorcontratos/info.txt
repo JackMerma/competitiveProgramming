@@ -1,0 +1,14 @@
+newStack:                 --------> STACK
+push    : STACK x INTEGER --------> STACK
+pop     : STACK           --------> STACK
+top     : STACK           --------> INTEGER u {undefined}
+empty   : STACK           --------> BOOLEAN
+
+axioms:
+pop(newstack) = newstack                YES
+pop(push(S, I)) = S                     NO
+top(newstack) = undefined               YES
+top(push(S, I)) = I                     YES
+empty(newstack) = true                  YES
+empty(push(S, I)) = false               YES
+empty(pop(push(newstack, I))) = true    NO
