@@ -32,57 +32,37 @@ using namespace std;
 #define INF 2e9
 #define len length
 #define endl "\n"
+#define pb push_back
 
 void solve(){
-    int n; cin>>n;
-    char c; cin>>c;
-    string str; cin>>str;
-
-    int pos=-1;
-
-    for(int i=0;i<n;i++){
-        if(str[i]=='g'){
-            pos=i;
-            break;
+    int n, m; cin>>n>>m;
+    vector<pair<int, int>> arr;
+    for(int i=0; i<n; i++){
+        for(int j=0;j<m;j++){
+            char dat; cin>>dat;
+            if(dat == 'A')
+                arr.pb(pair<int, int>(i, j));
         }
     }
 
-    int con[n] = {0};
-    int j=pos;
-    int total=pos;
-
+    int ans=INF;
     for(int i=0;i<n;i++){
-        if(str[j]=='g'){
-            total=0;
-            con[j]=0;
-        }else{
-            total++;
-            con[j]=total;
+        for(int j=0;j<m;j++){
+            char dat; cin>>dat;
+            if(dat=='T'){
+                int sum = 0;
+                for(auto dat: arr)
+                    sum+=abs(i-dat.first)+abs(j-dat.second);
+                ans=min(ans, sum);
+            }
         }
-        j=(j-1<0)?n-1:j-1;
     }
-
-    int ans=-1;
-    for(int i=0;i<n;i++)
-        if(str[i]==c)
-            ans=max(ans, con[i]);
-
     cout<<ans<<endl;
 }
 
 int main(){
 	ios_base::sync_with_stdio(false); cin.tie(NULL);
-    clock_t z = clock();
-
-    ll t; cin>>t;
-
-    while(t--) 
-        solve();
-
-#ifndef ONLINE_JUDGE
-    cout<<endl<<"Tiempo total: "<<fixed<<setprecision(3)<<(double)(clock()-z)/CLOCKS_PER_SEC<<endl;
-#endif
-
-	return 0;
+    solve();
+    return 0;
 }
 

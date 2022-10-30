@@ -34,40 +34,48 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-    int n; cin>>n;
-    char c; cin>>c;
-    string str; cin>>str;
-
-    int pos=-1;
-
-    for(int i=0;i<n;i++){
-        if(str[i]=='g'){
-            pos=i;
-            break;
-        }
-    }
-
-    int con[n] = {0};
-    int j=pos;
-    int total=pos;
-
-    for(int i=0;i<n;i++){
-        if(str[j]=='g'){
-            total=0;
-            con[j]=0;
+    int n, q; cin>>n>>q;
+    ll ci, cp, ti, tp;
+    ci=cp=0;
+    ti=tp=0;
+    
+    while(n--){
+        int num; cin>>num;
+        if(num%2){
+            ci++;
+            ti+=num;
         }else{
-            total++;
-            con[j]=total;
+            cp++;
+            tp+=num;
         }
-        j=(j-1<0)?n-1:j-1;
     }
 
-    int ans=-1;
-    for(int i=0;i<n;i++)
-        if(str[i]==c)
-            ans=max(ans, con[i]);
-
-    cout<<ans<<endl;
+    while(q--){
+        bool t; cin>>t;
+        int num; cin>>num;
+        if(t){
+            if(num%2){
+                ti+=num*ci;
+                tp+=ti;
+                ti=0;
+                cp+=ci;
+                ci=0;
+            }else{
+                ti+=num*ci;
+            }
+        }else{
+            if(num%2){
+                tp+=cp*num;
+                ti+=tp;
+                tp=0;
+                ci+=cp;
+                cp=0;
+            }else{
+                tp+=cp*num;
+            }
+        }
+        cout<<tp+ti<<endl;
+    }
 }
 
 int main(){
