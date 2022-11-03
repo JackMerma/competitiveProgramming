@@ -13,11 +13,10 @@ class arrayStack: public stack<T>{
         void resize();
     public:
         arrayStack(int);
-        //arrayStack(int s):size{s}, data{new T[size]}, sp{data}{
-        //}
         void push(T);
         void pop();
         T top();
         bool empty();
+        int length();
 };
 #endif

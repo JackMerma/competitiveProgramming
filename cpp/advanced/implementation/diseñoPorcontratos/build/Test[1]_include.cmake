@@ -1,0 +1,5 @@
+if(EXISTS "/home/jinnbit/Documentos/competitivo/cpp/advanced/implementation/diseñoPorcontratos/build/Test[1]_tests.cmake")
+  include("/home/jinnbit/Documentos/competitivo/cpp/advanced/implementation/diseñoPorcontratos/build/Test[1]_tests.cmake")
+else()
+  add_test(Test_NOT_BUILT Test_NOT_BUILT)
+endif()

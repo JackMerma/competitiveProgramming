@@ -6,9 +6,11 @@ empty   : STACK           --------> BOOLEAN
 
 axioms:
 pop(newstack) = newstack                YES
-pop(push(S, I)) = S                     NO
+pop(push(S, I)) = S                     YES
 top(newstack) = undefined               YES
 top(push(S, I)) = I                     YES
 empty(newstack) = true                  YES
 empty(push(S, I)) = false               YES
 empty(pop(push(newstack, I))) = true    NO
+length(newstack) = false                YES
+length(push(S, I)) = true               YES
