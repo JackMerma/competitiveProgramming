@@ -14,45 +14,61 @@ using namespace std;
 #define len length
 #define endl "\n"
 
+/**
+banban
+bnnbaa
+
+ban
+bna
+
+banbanban
+bnnbaaban
+bnnnaabab
+
+banbanbanbanban
+
+bnnbanbaabanban
+bnnnanbaababban
+bnnnnnbaababbaa
+
+bnnbaabanbanban
+bnnnaababbanban
+bnnnnababbaaban
+bnnnnnbabbaabaa
+*/
+
 void solve(){
-    ll n, q; cin>>n>>q;
-    ll cp=0, ci=0;
-    ll sp=0, si=0;
+    int n; cin>>n;
 
-    while(n--){
-        ll num; cin>>num;
-        if(num%2){
-            ci+=num;
-            si++;
-        }else{
-            cp+=num;
-            sp++;
-        }
+    int i=1;
+    int j=n;
+
+    cout<<n/2+n%2<<endl;
+
+    while(i<=j){
+        cout<<i*3-2<<" "<<j*3<<endl;
+        i++;
+        j--;
     }
 
-    while(q--){
-        int t; cin>>t;
-        ll num; cin>>num;
+    /**
 
-        if(t){
-            ci+=si*num;
-            if(num%2){
-                cp+=ci;
-                sp+=si;
-                ci=0;
-                si=0;
-            }
-        }else{
-            cp+=sp*num;
-            if(num%2){
-                ci+=cp;
-                si+=sp;
-                cp=0;
-                sp=0;
-            }
-        }
-        cout<<ci+cp<<endl;
+    int ob=(n+1)/3;
+    int cant=n-ob;
+    cout<<cant<<endl;
+
+    int ini=2;
+    int fin=(n+1);
+    for(int i=fin+1;i<fin+4;i++)
+        if(!(i%3))
+            fin=i/3;
+    for(int i=1;i<=cant;i++){
+        if(!(ini%3)) ini++;
+        cout<<ini<<" "<<fin*3<<endl;
+        ini++;
+        fin++;
     }
+    */
 }
 
 int main(){

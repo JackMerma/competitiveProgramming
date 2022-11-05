@@ -35,25 +35,18 @@ using namespace std;
 
 void solve(){
     int n; cin>>n;
-    vector<vector<int>> arr(51);
+    ll a=0, b=0;
 
     for(int i=0;i<n;i++){
-        int pos; cin>>pos;
-        arr[pos].push_back(i);
+        ll d; cin>>d;
+        if(d<=0)
+            a+=abs(d);
+        else
+            b+=d;
     }
-    string str; cin>>str;
-
-    for(auto fil:arr){
-        if(fil.size()>1){
-            for(int i=1;i<int(fil.size());i++){
-                if(str[fil[i]] != str[fil[0]]){
-                    cout<<"NO"<<endl;
-                    return;
-                }
-            }
-        }
-    }
-    cout<<"YES"<<endl;
+    if(a<b)
+        swap(a, b);
+    cout<<a-b<<endl;
 }
 
 int main(){
